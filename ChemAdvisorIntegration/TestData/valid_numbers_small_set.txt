@@ -1,0 +1,35 @@
+# This file contains numbers that are valid and
+# correctly formatted numbers in LDA fieldType of Number
+# The format of this file is on entry per line
+
+# Correct values
+# Two negative terms
+>-3 - <-2
+>=-3 - <=-2
+-3 - <-2
+-3 - <=-2
+-2 - -1
+-2 - 1
+1 - 2
+
+
+# One negative term, one positive term
+>-3 - 2
+>-3 - <2
+>=-3 - <=2
+
+# Two positive terms
+>3 - <5
+>=3 - <=5
+>3 - 5
+3 - <5
+>3 - <=5
+>=3 - <5
+>=3 - 5
+>3 - <5
+>=3.2 - <=5
+>3.5 - 5.5
+3 - <5.5
+>3.1 - <=5.2
+>=3.25 - <5.025
+>=3.1415926 - 5

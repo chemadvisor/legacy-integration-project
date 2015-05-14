@@ -1,0 +1,48 @@
+# This file contains numbers that need reformatting but
+# are otherwise valid numbers in fieldType of Number
+# The format of this file is <number>|<reformatted number>
+
+# No negative zero
+-0.0|0.0
+
+# Remove space between inequality symbol and number
+< 0.01|<0.01
+< 0.02|<0.02
+< 0.05|<0.05
+< 0.1|<0.1
+< 0.3|<0.3
+< 0.5|<0.5
+< 0.8|<0.8
+< 1|<1
+< 1.0|<1.0
+< 10|<10
+< 10.0|<10.0
+< 15|<15
+< 15.0|<15.0
+< 2.0|<2.0
+< 2.2|<2.2
+< 20|<20
+< 20.0|<20.0
+< 300.0|<300.0
+< 5.0|<5.0
+< 60.0|<60.0
+< 75.0|<75.0
+<= 0.45|<=0.45
+> 1|>1
+> 240|>240
+> 60|>60
+# Add space between number and %
+>=95%|>=95 %
+0.|0
+# Remove trailing space
+<=250 |<=250
+>=72 |>=72
+# Re-order so that <term1> is smaller value
+-5 - -6|-6 - -5
+7 - -4|-4 - 7
+9 - 2|2 - 9
+<5 - >3|>3 - <5
+<3 ->-5|>-5 - <3
+<=3->=-5|>=-5 - <=3
+<-3 ->-5|>-5 - <-3
+<=-3->=-5|>=-5 - <=-3

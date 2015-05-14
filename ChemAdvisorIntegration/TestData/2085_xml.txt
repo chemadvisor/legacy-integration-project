@@ -1,0 +1,16 @@
+<root><row><value>0.005</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.002</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.5</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.08</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>1</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type><expressedas id="003_0016327">CN</expressedas></row></root>
+<root><row><value>0.05</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type><formofexposure id="003_0001416">dust</formofexposure></row><row><value>0.03</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type><formofexposure id="003_0001414">fume</formofexposure></row></root>
+<root><row><value>0.05</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.5</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.4</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>2</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>1</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>10</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.03</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.3</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>0.05</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type></row></root>
+<root><row><value>1</value><unit id="003_0000377">mg/m3</unit><type id="003_0001402">Ceiling</type><expressedas id="003_0016327">CN</expressedas></row></root>
