@@ -4,30 +4,33 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB3DE5D6-7882-4355-891D-1467E6F7595E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>ChemAdvisorIntegration</RootNamespace>
-    <AssemblyName>ChemAdvisorIntegration</AssemblyName>
+    <ProjectGuid>{95A3744B-E027-4777-AE69-5BB1552C6F36}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>DemoLOLI.My.MyApplication</StartupObject>
+    <RootNamespace>DemoLOLI</RootNamespace>
+    <AssemblyName>DemoLOLI</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>ChemAdvisorIntegration.xml</DocumentationFile>
+    <DocumentationFile>DemoLOLI.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>ChemAdvisorIntegration.xml</DocumentationFile>
+    <DocumentationFile>DemoLOLI.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -43,12 +46,11 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>TestFramework\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,21 +62,22 @@
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Loli4\ListDataXml\LoliListDataXmlFactory.vb" />
-    <Compile Include="Loli4\ListDataXml\LoliListDataXmlTest.vb" />
-    <Compile Include="Loli4\ValidatableField\ILoliValidatableField.vb" />
-    <Compile Include="Loli4\ValidatableField\Number\ILoliNumberType.vb" />
-    <Compile Include="Loli4\ValidatableField\Number\LoliNumber.vb" />
-    <Compile Include="Loli4\ValidatableField\Number\LoliNumberFactory.vb" />
-    <Compile Include="Loli4\ValidatableField\Number\LoliNumberRange.vb" />
-    <Compile Include="Loli4\ValidatableField\Number\LoliNumberTerm.vb" />
-    <Compile Include="Loli4\ValidatableField\Number\LoliNumberTest.vb" />
+    <Compile Include="Classes\LoliDatafeed.vb" />
+    <Compile Include="Forms\Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main.Designer.vb">
+      <DependentUpon>Main.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -92,6 +95,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -109,21 +115,13 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="TestData\11_xml.txt" />
-    <Content Include="TestData\2085_xml.txt" />
-    <Content Include="TestData\283_xml.txt" />
-    <Content Include="TestData\3091_xml.txt" />
-    <Content Include="TestData\4044_xml.txt" />
-    <Content Include="TestData\816_xml.txt" />
-    <Content Include="TestData\invalid_numbers.txt" />
-    <Content Include="TestData\numbers_to_reformat.txt" />
-    <Content Include="TestData\valid_numbers.txt" />
-    <Content Include="TestFramework\nunitlite-license.txt" />
+    <ProjectReference Include="..\ChemAdvisorIntegration\ChemAdvisorIntegration.vbproj">
+      <Project>{eb3de5d6-7882-4355-891d-1467e6f7595e}</Project>
+      <Name>ChemAdvisorIntegration</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

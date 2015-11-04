@@ -1,0 +1,10 @@
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\bin\Debug\ChemAdvisorIntegration.dll
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\bin\Debug\ChemAdvisorIntegration.pdb
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\bin\Debug\ChemAdvisorIntegration.xml
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\bin\Debug\nunit.framework.dll
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\obj\Debug\ChemAdvisorIntegration.vbprojResolveAssemblyReference.cache
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\obj\Debug\ChemAdvisorIntegration.Resources.resources
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\obj\Debug\ChemAdvisorIntegration.vbproj.GenerateResource.Cache
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\obj\Debug\ChemAdvisorIntegration.dll
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\obj\Debug\ChemAdvisorIntegration.xml
+C:\dev\sources\svn\CAIntegration\ChemAdvisorIntegration\obj\Debug\ChemAdvisorIntegration.pdb
