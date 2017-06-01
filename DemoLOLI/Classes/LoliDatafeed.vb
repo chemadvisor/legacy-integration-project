@@ -104,6 +104,35 @@ Namespace Classes
 
         End Function
 
+        Public Function GetListNames(ByVal tagName As String) As DataTable
+
+            Dim mySql As String
+            If tagName = "" Then
+                mySql = "SELECT T.Name AS TagName,ListCategory1,ListName,LN.ListID FROM ListNames AS LN INNER JOIN ListNames_Tags AS LN_T ON LN.ListID=LN_T.ListID INNER JOIN Tags AS T ON LN_T.TagID=T.TagID ORDER BY TagName,ListCategory1,ListName"
+            Else
+                mySql = "SELECT T.Name as TagName,ListCategory1,ListName,LN.ListID FROM ListNames AS LN INNER JOIN ListNames_Tags AS LN_T ON LN.ListID=LN_T.ListID INNER JOIN Tags AS T ON LN_T.TagID=T.TagID WHERE T.Name='" & tagName & "' ORDER BY TagName,ListCategory1,ListName"
+            End If
+
+            Dim dtListNames As DataTable = GetTable(mySql)
+
+            Return dtListNames
+
+        End Function
+
+        Public Function GetTagNames() As AutoCompleteStringCollection
+
+            Dim mySql As String = "SELECT Name AS TagName FROM Tags ORDER By Name"
+            Dim dtTagNames As DataTable = GetTable(mySql)
+
+            Dim acColTags As New AutoCompleteStringCollection
+            For Each dr As DataRow In dtTagNames.Rows
+                acColTags.Add(dr.Item("TagName"))
+            Next
+
+            Return acColTags
+
+        End Function
+
         Public Function GetListDataByListId(ByVal listId As String, ByVal processListDataMethod As Integer) As DataTable
 
             Dim mySql As String
