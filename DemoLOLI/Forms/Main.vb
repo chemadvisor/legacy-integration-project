@@ -28,6 +28,7 @@ Namespace Forms
         Private _loliDb As LoliDatafeed
         Private _viewAs As Integer
         Private _treeOrg As Integer
+        Private _tagName As String = ""
         Private _currentListId As String = 0
         Private Const ShowXml As Integer = 0
         Private Const ShowXmLexp As Integer = 1
@@ -36,6 +37,7 @@ Namespace Forms
         Private Const TreeListcat1 As Integer = 1
         Private Const TreeListcat2 As Integer = 2
         Private Const TreeDataType As Integer = 3
+        Private Const TreeListTag As Integer = 4
 
 #Region "Form Related Events"
         Public Sub New()
@@ -60,6 +62,8 @@ Namespace Forms
                         txtSvrName.Enabled = False
                         txtUser.Enabled = False
                         txtPassword.Enabled = False
+                        bgTreeOptions.Enabled = True
+                        gbViewOptions.Enabled = True
                         FillTreeView()
 
                         My.Settings.DbName = txtDbName.Text
@@ -84,10 +88,21 @@ Namespace Forms
                 txtSvrName.Enabled = True
                 txtUser.Enabled = True
                 txtPassword.Enabled = True
+                bgTreeOptions.Enabled = False
+                gbViewOptions.Enabled = False
                 tvLoliLists.Nodes.Clear()
                 dgvListData.DataSource = Nothing
                 Text = "LOLI Datafeed Demo - Disconnected"
             End If
+        End Sub
+
+        Private Sub btnBuildTreeByTagName_Click(sender As Object, e As EventArgs) Handles btnBuildTreeByTagName.Click
+            _tagName = txtListTagName.Text
+            FillTreeView()
+        End Sub
+
+        Private Sub btnClearListTags_Click(sender As Object, e As EventArgs) Handles btnClearListTags.Click
+            txtListTagName.Clear()
         End Sub
 
         Private Sub tvLoliLists_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles tvLoliLists.AfterSelect
@@ -146,6 +161,20 @@ Namespace Forms
             End If
         End Sub
 
+        Private Sub rbTreeListTag_CheckedChanged(sender As Object, e As EventArgs) Handles rbTreeListTag.CheckedChanged
+            If rbTreeListTag.Checked Then
+                tvLoliLists.Nodes.Clear()
+                _treeOrg = TreeListTag
+                ProcessAutoCompletion()
+            Else
+                txtListTagName.Clear()
+            End If
+
+            txtListTagName.Enabled = rbTreeListTag.Checked
+            btnBuildTreeByTagName.Enabled = rbTreeListTag.Checked
+            btnClearListTags.Enabled = rbTreeListTag.Checked
+        End Sub
+
         Private Sub tsmiValidateContent_Click(sender As Object, e As EventArgs) Handles tsmiValidateContent.Click
             If _currentListId = 0 Then
                 MsgBox("Please select a LOLI List first.", MsgBoxStyle.Exclamation)
@@ -179,9 +208,15 @@ Namespace Forms
                 dgvListData.DataSource = Nothing
 
                 Dim strParentField As String = ""
-                Dim dtListNames As DataTable = _loliDb.GetListNames(_treeOrg)
+                Dim dtListNames As DataTable
+                Select Case _treeOrg
+                    Case TreeListTag
+                        dtListNames = _loliDb.GetListNames(_tagName)
+                    Case Else
+                        dtListNames = _loliDb.GetListNames(_treeOrg)
+                End Select
 
-                If _treeOrg = TreeListcat2 Then
+                If _treeOrg = TreeListcat2 Or _treeOrg = TreeListTag Then
                     Dim lastLc1 As String = ""
                     Dim lastLc2 As String = ""
                     Dim curLc1 As String
@@ -190,8 +225,13 @@ Namespace Forms
                     Dim curListId As String
 
                     For Each dr As DataRow In dtListNames.Rows
-                        curLc1 = dr("ListCategory1")
-                        curLc2 = dr("ListCategory2")
+                        If _treeOrg = TreeListTag Then
+                            curLc1 = dr("TagName")
+                            curLc2 = dr("ListCategory1")
+                        Else
+                            curLc1 = dr("ListCategory1")
+                            curLc2 = dr("ListCategory2")
+                        End If
                         curListName = dr("ListName")
                         curListId = dr("ListID").ToString()
 
@@ -246,6 +286,15 @@ Namespace Forms
                 gbListData.Text = tvLoliLists.SelectedNode.Text & " (ListID: " & tvLoliLists.SelectedNode.Tag & "; Count: " & Format(dtListData.Rows.Count, "#,###") & ")"
             End If
         End Sub
+
+        Private Sub ProcessAutoCompletion()
+            txtListTagName.AutoCompleteCustomSource.Clear()
+
+            Dim allTagNames As AutoCompleteStringCollection = _loliDb.GetTagNames()
+            txtListTagName.AutoCompleteCustomSource = allTagNames
+
+        End Sub
+
 #End Region
 
     End Class
