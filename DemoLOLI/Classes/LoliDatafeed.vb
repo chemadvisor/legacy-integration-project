@@ -121,7 +121,19 @@ Namespace Classes
 
         Public Function GetTagNames() As AutoCompleteStringCollection
 
-            Dim mySql As String = "SELECT Name AS TagName FROM Tags ORDER By Name"
+            'get all Tags only for auto complete
+            'Dim mySql As String = "SELECT Name AS TagName FROM Tags ORDER By Name"
+
+            'get all Tags plus treat List Categories 1 and 2, Regions as tags for auto complete
+            Dim mySql As String = "SELECT DISTINCT ListCategory1 AS TagName FROM ListNames "
+            mySql += "UNION "
+            mySql += "SELECT DISTINCT ListCategory2 AS TagName FROM ListNames "
+            mySql += "UNION "
+            mySql += "SELECT DISTINCT Region AS TagName FROM ListNames "
+            mySql += "UNION "
+            mySql += "SELECT Name AS TagName FROM Tags "
+            mySql += "ORDER BY TagName"
+
             Dim dtTagNames As DataTable = GetTable(mySql)
 
             Dim acColTags As New AutoCompleteStringCollection
