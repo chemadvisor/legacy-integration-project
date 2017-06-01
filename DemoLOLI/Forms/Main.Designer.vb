@@ -46,10 +46,15 @@
             Me.rbListXML = New System.Windows.Forms.RadioButton()
             Me.rbListData = New System.Windows.Forms.RadioButton()
             Me.bgTreeOptions = New System.Windows.Forms.GroupBox()
+            Me.btnClearListTags = New System.Windows.Forms.Button()
+            Me.btnBuildTreeByTagName = New System.Windows.Forms.Button()
+            Me.txtListTagName = New System.Windows.Forms.TextBox()
+            Me.rbTreeListTag = New System.Windows.Forms.RadioButton()
             Me.rbTreeDataType = New System.Windows.Forms.RadioButton()
             Me.rbTreeListCat2 = New System.Windows.Forms.RadioButton()
             Me.rbTreeRegion = New System.Windows.Forms.RadioButton()
             Me.rbTreeListCat1 = New System.Windows.Forms.RadioButton()
+            Me.toolTips = New System.Windows.Forms.ToolTip(Me.components)
             Me.gbDbCon.SuspendLayout()
             Me.TableLayoutPanel1.SuspendLayout()
             Me.gbListData.SuspendLayout()
@@ -160,15 +165,15 @@
             Me.TableLayoutPanel1.AutoSize = True
             Me.TableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
             Me.TableLayoutPanel1.ColumnCount = 2
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.67954!))
-            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.32046!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.14719!))
+            Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.85281!))
             Me.TableLayoutPanel1.Controls.Add(Me.gbListData, 0, 0)
             Me.TableLayoutPanel1.Controls.Add(Me.gbLists, 0, 0)
-            Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 104)
+            Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 145)
             Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
             Me.TableLayoutPanel1.RowCount = 1
             Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel1.Size = New System.Drawing.Size(1138, 531)
+            Me.TableLayoutPanel1.Size = New System.Drawing.Size(1135, 547)
             Me.TableLayoutPanel1.TabIndex = 3
             '
             'gbListData
@@ -178,9 +183,9 @@
                 Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.gbListData.AutoSize = True
             Me.gbListData.Controls.Add(Me.dgvListData)
-            Me.gbListData.Location = New System.Drawing.Point(397, 3)
+            Me.gbListData.Location = New System.Drawing.Point(401, 3)
             Me.gbListData.Name = "gbListData"
-            Me.gbListData.Size = New System.Drawing.Size(738, 525)
+            Me.gbListData.Size = New System.Drawing.Size(731, 541)
             Me.gbListData.TabIndex = 2
             Me.gbListData.TabStop = False
             Me.gbListData.Text = "LOLI List Data"
@@ -194,7 +199,7 @@
             Me.dgvListData.ContextMenuStrip = Me.cmsGrid
             Me.dgvListData.Location = New System.Drawing.Point(6, 19)
             Me.dgvListData.Name = "dgvListData"
-            Me.dgvListData.Size = New System.Drawing.Size(729, 491)
+            Me.dgvListData.Size = New System.Drawing.Size(724, 507)
             Me.dgvListData.TabIndex = 12
             '
             'cmsGrid
@@ -217,7 +222,7 @@
             Me.gbLists.Controls.Add(Me.tvLoliLists)
             Me.gbLists.Location = New System.Drawing.Point(3, 3)
             Me.gbLists.Name = "gbLists"
-            Me.gbLists.Size = New System.Drawing.Size(388, 525)
+            Me.gbLists.Size = New System.Drawing.Size(392, 541)
             Me.gbLists.TabIndex = 1
             Me.gbLists.TabStop = False
             Me.gbLists.Text = "LOLI Lists"
@@ -229,7 +234,7 @@
                 Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tvLoliLists.Location = New System.Drawing.Point(6, 19)
             Me.tvLoliLists.Name = "tvLoliLists"
-            Me.tvLoliLists.Size = New System.Drawing.Size(372, 491)
+            Me.tvLoliLists.Size = New System.Drawing.Size(377, 507)
             Me.tvLoliLists.TabIndex = 11
             '
             'gbViewOptions
@@ -237,9 +242,10 @@
             Me.gbViewOptions.Controls.Add(Me.rbListXMLexpand)
             Me.gbViewOptions.Controls.Add(Me.rbListXML)
             Me.gbViewOptions.Controls.Add(Me.rbListData)
+            Me.gbViewOptions.Enabled = False
             Me.gbViewOptions.Location = New System.Drawing.Point(409, 59)
             Me.gbViewOptions.Name = "gbViewOptions"
-            Me.gbViewOptions.Size = New System.Drawing.Size(742, 39)
+            Me.gbViewOptions.Size = New System.Drawing.Size(742, 80)
             Me.gbViewOptions.TabIndex = 4
             Me.gbViewOptions.TabStop = False
             Me.gbViewOptions.Text = "View Options"
@@ -247,7 +253,7 @@
             'rbListXMLexpand
             '
             Me.rbListXMLexpand.AutoSize = True
-            Me.rbListXMLexpand.Location = New System.Drawing.Point(179, 16)
+            Me.rbListXMLexpand.Location = New System.Drawing.Point(186, 17)
             Me.rbListXMLexpand.Name = "rbListXMLexpand"
             Me.rbListXMLexpand.Size = New System.Drawing.Size(271, 17)
             Me.rbListXMLexpand.TabIndex = 9
@@ -259,7 +265,7 @@
             '
             Me.rbListXML.AutoSize = True
             Me.rbListXML.Checked = True
-            Me.rbListXML.Location = New System.Drawing.Point(18, 16)
+            Me.rbListXML.Location = New System.Drawing.Point(25, 17)
             Me.rbListXML.Name = "rbListXML"
             Me.rbListXML.Size = New System.Drawing.Size(155, 17)
             Me.rbListXML.TabIndex = 8
@@ -270,7 +276,7 @@
             'rbListData
             '
             Me.rbListData.AutoSize = True
-            Me.rbListData.Location = New System.Drawing.Point(461, 15)
+            Me.rbListData.Location = New System.Drawing.Point(468, 16)
             Me.rbListData.Name = "rbListData"
             Me.rbListData.Size = New System.Drawing.Size(220, 17)
             Me.rbListData.TabIndex = 10
@@ -279,16 +285,64 @@
             '
             'bgTreeOptions
             '
+            Me.bgTreeOptions.Controls.Add(Me.btnClearListTags)
+            Me.bgTreeOptions.Controls.Add(Me.btnBuildTreeByTagName)
+            Me.bgTreeOptions.Controls.Add(Me.txtListTagName)
+            Me.bgTreeOptions.Controls.Add(Me.rbTreeListTag)
             Me.bgTreeOptions.Controls.Add(Me.rbTreeDataType)
             Me.bgTreeOptions.Controls.Add(Me.rbTreeListCat2)
             Me.bgTreeOptions.Controls.Add(Me.rbTreeRegion)
             Me.bgTreeOptions.Controls.Add(Me.rbTreeListCat1)
+            Me.bgTreeOptions.Enabled = False
             Me.bgTreeOptions.Location = New System.Drawing.Point(12, 59)
             Me.bgTreeOptions.Name = "bgTreeOptions"
-            Me.bgTreeOptions.Size = New System.Drawing.Size(391, 39)
+            Me.bgTreeOptions.Size = New System.Drawing.Size(391, 80)
             Me.bgTreeOptions.TabIndex = 5
             Me.bgTreeOptions.TabStop = False
             Me.bgTreeOptions.Text = "Tree Options"
+            '
+            'btnClearListTags
+            '
+            Me.btnClearListTags.Enabled = False
+            Me.btnClearListTags.Location = New System.Drawing.Point(295, 44)
+            Me.btnClearListTags.Name = "btnClearListTags"
+            Me.btnClearListTags.Size = New System.Drawing.Size(20, 20)
+            Me.btnClearListTags.TabIndex = 12
+            Me.btnClearListTags.Text = "X"
+            Me.toolTips.SetToolTip(Me.btnClearListTags, "Clear Tag Name Search Box")
+            Me.btnClearListTags.UseVisualStyleBackColor = True
+            '
+            'btnBuildTreeByTagName
+            '
+            Me.btnBuildTreeByTagName.Enabled = False
+            Me.btnBuildTreeByTagName.Location = New System.Drawing.Point(321, 43)
+            Me.btnBuildTreeByTagName.Name = "btnBuildTreeByTagName"
+            Me.btnBuildTreeByTagName.Size = New System.Drawing.Size(59, 22)
+            Me.btnBuildTreeByTagName.TabIndex = 11
+            Me.btnBuildTreeByTagName.Text = "GO"
+            Me.toolTips.SetToolTip(Me.btnBuildTreeByTagName, "Rebuild Tree based upon List Tag Names")
+            Me.btnBuildTreeByTagName.UseVisualStyleBackColor = True
+            '
+            'txtListTagName
+            '
+            Me.txtListTagName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+            Me.txtListTagName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+            Me.txtListTagName.Enabled = False
+            Me.txtListTagName.Location = New System.Drawing.Point(93, 45)
+            Me.txtListTagName.Name = "txtListTagName"
+            Me.txtListTagName.Size = New System.Drawing.Size(204, 20)
+            Me.txtListTagName.TabIndex = 10
+            Me.toolTips.SetToolTip(Me.txtListTagName, "Search for specific Tag Name (leave blank to show all tags)")
+            '
+            'rbTreeListTag
+            '
+            Me.rbTreeListTag.AutoSize = True
+            Me.rbTreeListTag.Location = New System.Drawing.Point(9, 44)
+            Me.rbTreeListTag.Name = "rbTreeListTag"
+            Me.rbTreeListTag.Size = New System.Drawing.Size(78, 17)
+            Me.rbTreeListTag.TabIndex = 9
+            Me.rbTreeListTag.Text = "By List Tag"
+            Me.rbTreeListTag.UseVisualStyleBackColor = True
             '
             'rbTreeDataType
             '
@@ -297,7 +351,6 @@
             Me.rbTreeDataType.Name = "rbTreeDataType"
             Me.rbTreeDataType.Size = New System.Drawing.Size(75, 17)
             Me.rbTreeDataType.TabIndex = 8
-            Me.rbTreeDataType.TabStop = True
             Me.rbTreeDataType.Text = "Data Type"
             Me.rbTreeDataType.UseVisualStyleBackColor = True
             '
@@ -308,7 +361,6 @@
             Me.rbTreeListCat2.Name = "rbTreeListCat2"
             Me.rbTreeListCat2.Size = New System.Drawing.Size(110, 17)
             Me.rbTreeListCat2.TabIndex = 6
-            Me.rbTreeListCat2.TabStop = True
             Me.rbTreeListCat2.Text = "By List Category 2"
             Me.rbTreeListCat2.UseVisualStyleBackColor = True
             '
@@ -319,7 +371,6 @@
             Me.rbTreeRegion.Name = "rbTreeRegion"
             Me.rbTreeRegion.Size = New System.Drawing.Size(74, 17)
             Me.rbTreeRegion.TabIndex = 7
-            Me.rbTreeRegion.TabStop = True
             Me.rbTreeRegion.Text = "By Region"
             Me.rbTreeRegion.UseVisualStyleBackColor = True
             '
@@ -339,7 +390,7 @@
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-            Me.ClientSize = New System.Drawing.Size(1159, 643)
+            Me.ClientSize = New System.Drawing.Size(1159, 704)
             Me.Controls.Add(Me.bgTreeOptions)
             Me.Controls.Add(Me.gbViewOptions)
             Me.Controls.Add(Me.TableLayoutPanel1)
@@ -388,6 +439,10 @@
         Friend WithEvents cmsGrid As System.Windows.Forms.ContextMenuStrip
         Friend WithEvents tsmiValidateContent As System.Windows.Forms.ToolStripMenuItem
         Friend WithEvents rbTreeDataType As System.Windows.Forms.RadioButton
-
+        Friend WithEvents txtListTagName As TextBox
+        Friend WithEvents rbTreeListTag As RadioButton
+        Friend WithEvents btnBuildTreeByTagName As Button
+        Friend WithEvents btnClearListTags As Button
+        Friend WithEvents toolTips As System.Windows.Forms.ToolTip
     End Class
 End Namespace
